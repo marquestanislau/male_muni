@@ -19,8 +19,10 @@ from django.urls import include
 
 from rest_framework import routers
 
+from informal.views import ItemViewSet
+
 router = routers.DefaultRouter()
-# router.register()
+router.register('item', ItemViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -8,11 +8,17 @@ from django.db import models
 class Provincia(models.Model):
 	nome = models.CharField(max_length=100, blank=False)
 
+	def __str__(self):
+		return self.nome
+
 # A cidade em que se encontra o mercado
 
 class Cidade(models.Model):
 	nome = models.CharField(max_length=100, blank=False)
 	provincia = models.ForeignKey(Provincia, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.nome
 	
 """
 	Os mercados nacionais registados 
@@ -22,8 +28,15 @@ class Cidade(models.Model):
 class Mercado(models.Model):
 	nome = models.CharField(max_length=100, blank=False)
 	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField()
+	updated = models.DateTimeField(auto_now_add=True)
 	cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.nome
+
+	@property
+	def provincia(self):
+		return cidade.provincia
 
 # Aquele que posta os produtos
 class Vendedor(models.Model):
@@ -48,11 +61,22 @@ class Categoria(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	created = models.DateTimeField()
 
+	def __str__(self):
+		return self.nome
+
 # O que vai ser vendido pelo vendedor e comprado pelo cliente
 # Os produtos são pré-registados no sistema para evitar redundância de informação
 class Produto(models.Model):
 	nome = models.CharField(max_length=200, blank=False)
-	# Colocar a categoria de cada produto
+	categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+	created = models.DateTimeField(auto_now_add=True)
+	modified = models.DateTimeField(auto_now_add=True)
+	# Colocar a categoria de cada produto, 
+	# As categorias são conforme os tipos de alimentos ou produtos
+	# Inicialmente devemos pensar somente nos produtos alimenticios
+
+	def __str__(self):
+		return self.nome
 
 
 class Item(models.Model):

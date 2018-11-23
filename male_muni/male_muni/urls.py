@@ -17,15 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 
-from rest_framework import routers
-
-from informal.views import ItemViewSet
-
-router = routers.DefaultRouter()
-router.register('item', ItemViewSet)
+from informal.api import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-    path('api/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api/v1/', include(router.urls)),
+   # path('api/', include('rest_framework.urls', namespace='rest_framework'))
 ]

@@ -22,7 +22,14 @@ class MercadoAdmin(admin.ModelAdmin):
 class ProdutoAdmin(admin.ModelAdmin):
 	list_display = ('nome', 'categoria')
 
-admin.site.register(Provincia)
-admin.site.register(Categoria)
+
+@admin.register(Provincia)
+class ProvinciaAdmin(admin.ModelAdmin):
+	list_display = ('nome',)
+
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
+	list_display = ('nome', 'created', 'modified',)
+
 
 

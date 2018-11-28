@@ -59,7 +59,7 @@ class Cliente(models.Model):
 class Categoria(models.Model):
 	nome = models.CharField(max_length=150, blank=False)
 	created = models.DateTimeField(auto_now_add=True)
-	created = models.DateTimeField(auto_now_add=True)
+	modified = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
 		return self.nome

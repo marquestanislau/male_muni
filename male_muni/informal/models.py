@@ -45,8 +45,11 @@ class Vendedor(models.Model):
 	contacto = models.IntegerField(blank=False)
 	contacto_alternativo = models.IntegerField(blank=True)
 	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField()
+	updated = models.DateTimeField(auto_now_add=True)
 	mercado = models.ForeignKey(Mercado, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.nome
 
 
 # Aquele que vai visualizar o produto no sistema
@@ -99,7 +102,8 @@ class Comentario(models.Model):
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)	
 
 
-# Esta opção é para classificar um produto de acordo com o número de gostos que receber
+# Esta opção é para classificar um produto de acordo com o 
+# número de gostos que receber
 class Gosto(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField()

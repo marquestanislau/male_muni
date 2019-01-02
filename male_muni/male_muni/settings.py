@@ -25,7 +25,13 @@ SECRET_KEY = 'hkpyr9b#y3#rv4fj8k*q7n1&wlulhs&q4g^_8pt(=f^3&h2wn$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '192.168.100.2'] # Just for testing in local env
+
+# changes the default type of the request, html to json
+
+REST_FRAMEWORK = {
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
 
 
 # Application definition

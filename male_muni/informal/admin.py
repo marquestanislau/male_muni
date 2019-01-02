@@ -44,4 +44,3 @@ class VendedorAdmin(admin.ModelAdmin):
 	list_display = ('nome', 'apelido', 'contacto', 'contacto_alternativo', 'mercado',)
 
 
-

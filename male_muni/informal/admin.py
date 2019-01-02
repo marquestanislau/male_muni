@@ -6,6 +6,8 @@ from informal.models import Mercado
 from informal.models import Provincia
 from informal.models import Categoria
 from informal.models import Produto
+from informal.models import Item
+from informal.models import Vendedor
 
 @admin.register(Cidade)
 class CidadeAdmin(admin.ModelAdmin):
@@ -30,6 +32,16 @@ class ProvinciaAdmin(admin.ModelAdmin):
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
 	list_display = ('nome', 'created', 'modified',)
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+	list_display = ('nome', 'preco',)
+
+
+@admin.register(Vendedor)
+class VendedorAdmin(admin.ModelAdmin):
+	list_display = ('nome', 'apelido', 'contacto', 'contacto_alternativo', 'mercado',)
 
 
 
